@@ -258,43 +258,34 @@ This newly created city will now be assigned the attributes that we scraped in t
 {% highlight ruby linenos%}
   def assign_attributes(new_city)
     attributes = BreatheIn::Scraper.city_air_quality
-    city_info_hash = new_city.add_city_air_quality(attributes)
     ...
   end
 {% endhighlight %}
 
-The `#assign_attributes` takes in an argument of the new city object that was just created - more on this in a second. But first, this method will call on `#city_air_quality` in the Scraper class - which scrapes the relevant data from the website and creates a hash of attributes from it. Next the `#add_city_air_quality` method from the City class will be invoked on the city object, passing in this scraped data hash. As a result, the city will now be associated with a hash of attributes.
+`#assign_attributes` takes in an argument of the new city object that was just created - more on this in a second. But first, this method will call on `#city_air_quality` in the Scraper class - which scrapes the relevant data from the website and creates a hash of attributes from it.
 
 {% highlight ruby linenos%}
   def assign_attributes(new_city)
     ...
-    if !BreatheIn::Scraper.today_high
-      city_info_hash
-      new_city.today_high = "Today's high currently unavailable."
-
-    elsif !BreatheIn::Scraper.current_conditions_value
-      city_info_hash
-      new_city.last_update_value = "Current AQI unavailable."
-
-    elsif !BreatheIn::Scraper.index_level
-      city_info_hash
-      new_city.today_index = "Level information unavailable."
-
-    elsif !BreatheIn::Scraper.current_conditions_time
-      city_info_hash
-      new_city.last_update_time = "Time unavailable."
-
-    elsif !BreatheIn::Scraper.current_conditions_index 
-      city_info_hash
-      new_city.last_update_index = "Current level unavailable."
-
-    else
-      city_info_hash
-    end
+    attributes[:today_high] = "Data currently unavailable." if !attributes.has_key?(:today_high)
+    attributes[:today_index] = "Data currently unavailable." if !attributes.has_key?(:today_index)
+    attributes[:last_update_value] = "Data currently unavailable." if !attributes.has_key?(:last_update_value)
+    attributes[:last_update_time] = "Data currently unavailable." if !attributes.has_key?(:last_update_time)
+    attributes[:last_update_index] = "Data currently unavailable." if !attributes.has_key?(:last_update_index)      
+    ...
   end
 {% endhighlight %}
 
-I mentioned the `#assign_attributes` method takes in an argument of the city object - this is because data from AirNow.gov is intermittently unavailable for certain zipcodes, certain time periods, and sometimes, random system glitches. This conditional checks to see if the data for each scraped value of the city object is `nil` and if it is, assigns that key a string statement (not every value is `nil` at the same time). Without this logic, a `nil` data value will be populated with the previous search's results.
+Data from AirNow.gov is intermittently unavailable for certain zipcodes, certain time periods, and sometimes, random system glitches. These conditional statements check to see if the data for each scraped value of the city object is `nil` and if it is, assigns that key a string statement. It must check every possible hash key because not every value is `nil` at the same time. Without this logic, a `nil` data value will be populated with the previous search's results.
+
+{% highlight ruby linenos%}
+  def assign_attributes(new_city)
+    ...
+    city_info_hash = new_city.add_city_air_quality(attributes)
+  end
+{% endhighlight %}
+
+ Finally, the `#add_city_air_quality` method from the City class will be invoked on the city object, new_city, passing in the scraped data hash. As a result, the city will now be associated with a hash of attributes.
 
 {% highlight ruby linenos%}
   def display_information

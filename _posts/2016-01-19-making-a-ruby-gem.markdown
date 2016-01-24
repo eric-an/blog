@@ -2,7 +2,7 @@
 layout: post
 title:  "Making a Ruby Gem"
 date:   2016-01-19
-categories: jekyll theme
+permalink: /making_a_ruby_gem
 ---
 
 In this post, I will outline the basic set-up and process to create a gem that displays the air quality in a chosen zipcode of the US. In creating this gem, we need to consider questions like: 
@@ -50,10 +50,10 @@ The first step is to obtain data. The gem must display: 1.) the expected air qua
 To begin, we can define a simple scraping method inside of our `scraper.rb` file. The method can be as simple as: 
 
 {% highlight ruby linenos%}
-def get_page
-      doc = Nokogiri::HTML(open("http://airnow.gov/?action=airnow.local_city&zipcode=90101&submit=Go"))
-      binding.pry
-    end
+  def get_page
+    doc = Nokogiri::HTML(open("http://airnow.gov/?action=airnow.local_city&zipcode=90101&submit=Go"))
+    binding.pry
+  end
 {% endhighlight %}
 
 Notice that we have already input a zipcode and are opening the HTML with `Open-Uri`'s `#open` method and getting ready to scrape it with `Nokogiri`. We will use `Pry` to experiment with obtaining the correct tags to extract the necessary data. Awesome how powerful that combination is, right??

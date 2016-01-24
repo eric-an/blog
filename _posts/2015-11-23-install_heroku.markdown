@@ -57,12 +57,12 @@ Make a <a href="https://signup.heroku.com/dc" target="_blank">Heroku account</a>
 ###6. Run `$ heroku login`###
 
 In your terminal, run the command and follow the prompts to login and utilize the <code>heroku</code> command.
-<img src="{{ "/img/heroku_login.png"}}" alt="heroku_login" width="323" height="83" /><br>
+<img src="{{ site.baseurl }}/img/heroku_login.png" alt="heroku_login" width="323" height="83" /><br>
 *- image courtesy of <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby#set-up" target="_blank">Heroku</a>*
 
 ###7. Run `$ heroku create` from within your project directory###
 
-<img src="{{"/img/heroku_create.png"}}" alt="heroku_create" width="631" height="82" /><br>
+<img src="{{ site.baseurl }}/img/heroku_create.png" alt="heroku_create" width="631" height="82" /><br>
 *- image courtesy of <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby#deploy-the-app" target="_blank">Heroku</a>*
 
 This will create a new empty project on Heroku and also a git remote that links your app to Heroku.

@@ -9,7 +9,7 @@ It happens every once in a while - the database table is set up incorrectly in t
 
 **Problem:**
 
-<img src="{{ "/img/migration_error.png"}}" alt="migration_error" width="646" height="280" /><br>
+<img src="{{ site.baseurl }}/img/migration_error.png" alt="migration_error" width="646" height="280" /><br>
 *`:rating` is incorrectly identified in the comments database table as a string when it should be an integer*
 
 **Solution A: db:rollback**

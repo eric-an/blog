@@ -1,0 +1,77 @@
+---
+layout: post
+title:  "git revert vs. git reset"
+date:   2015-12-20
+permalink: /git_reset_git_revert
+---
+
+I previously wrote about two different methods to <a href="{{ "/rollback_migrations"}}" target="_blank">rollback a database migration file</a>. In this entry, I will explain two different methods to undo commits made to your application.
+
+**Groundwork:**
+
+`$ git log --oneline`
+<ul>
+  <li>This will show an abbreviated list of all recent commits made. The unique ID in front (the "hash" or "SHA") will be needed to undo any commits.</li>
+</ul>
+**Situation 1: The commit has already been uploaded with `$ git push.`**
+
+`$ git revert <SHA>;`
+<ul>
+  <li>This will create a new commit that reverses all the additions and deletions done in that particular &lt;SHA&gt; commit.</li>
+</ul>
+Example:
+
+{% highlight ruby linenos %}
+My-Macbook:railsapp HomeUser$ git log --oneline
+  684ba64 edit README file
+  8bcd79c add skills, portfolio, and about sections
+  af0a023 navbar creation
+  bd1b6a4 add responsive intro screen
+  42d6aa8 first commit
+My-Macbook:railsapp HomeUser$ git revert 684ba64
+{% endhighlight %}
+
+{% highlight ruby linenos %}
+Revert "edit README file"
+
+This reverts commit 684ba647629bdfd2e0c31216b13fb51673a0c0af.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#       modified:   README.rdoc
+#
+~ 
+~
+"~/Desktop/railsapp/.git/COMMIT_EDITMSG" 10L, 304C
+{% endhighlight %}
+
+The second code block shows the VIM editor in which the message on the new commit can be modified. Simply type "a" to append the message, edit the message, push "esc" when done, and then type "<strong>:</strong>exit" to save the changes and to commit the changes. More about VIM Editor commands <a href="http://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm" target="_blank">here</a>.
+
+Afterwards, run `$ git push` to update the new commit, keeping the mistaken commit in the history.
+
+**Situation 2: Removing local commits that have not been pushed.**
+
+`$ git reset --hard <SHA>;`
+<ul>
+  <li>This will undo any changes made to the working directory and rewind your application back to the specific &lt;SHA&gt;. It will also delete any commits made after the specific &lt;SHA&gt;.</li>
+</ul>
+Example:
+
+{% highlight ruby linenos %}
+My-Macbook:railsapp HomeUser$ git log --oneline
+  684ba64 edit README file
+  8bcd79c add skills, portfolio, and about sections
+  af0a023 navbar creation
+  bd1b6a4 add responsive intro screen
+  42d6aa8 first commit
+My-Macbook:railsapp HomeUser$ git reset --hard af0a023
+  HEAD is now at af0a023 navbar creation
+My-Macbook:railsapp HomeUser$ git log --oneline
+  af0a023 navbar creation
+  bd1b6a4 add responsive intro screen
+  42d6aa8 first commit
+{% endhighlight %}
+
+More information on undoing changes to your repository can be found at the <a href="https://github.com/blog/2019-how-to-undo-almost-anything-with-git" target="_blank">GitHub website</a>, including how to redo your undos.

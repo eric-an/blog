@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Yield!"
+date:   2016-01-03
+permalink: /yield
+---
+
+The `yield` statement provides a more in-depth look at what happens when enumerators like `#each` and `#collect` are used. These methods are used on arrays and iterate through the collection, applying code contained in the block to each element.
+
+`Yield` is especially powerful because it can take parameters and pass in data as an argument to the code in the block to execute it. To call a method with a `yield` statement that takes parameters, the method is invoked with an argument and a block that includes the code we want to apply to each yielded value that is passed in.
+
+An example:
+
+{% highlight ruby linenos %}
+def animals(array)
+  i = 0
+  until i >= array.length
+    yield (array[i])
+    i += 1
+  end
+  array
+end
+
+animals(['dog', 'cat', 'bear', 'tiger']) do |x| 
+  puts "I have a #{x} in my backyard."
+end
+{% endhighlight %}
+
+{% highlight ruby linenos %}
+> I have a dog in my backyard.
+> I have a cat in my backyard.
+> I have a bear in my backyard.
+> I have a tiger in my backyard.
+=> ["dog", "cat", "bear", "tiger"]
+{% endhighlight %}
+
+We have the `#animals` array that will iterate over the collection using  an `until` loop and a `yield` statement. This method is called on line 10, passing in an argument with the array ['dog', 'cat', 'bear', 'tiger']. Notice, a block is also passed in with it: 
+
+`{ |x| puts "I have a #{x} in my backyard." }`
+
+When the method is invoked, the array will be passed into the `until` loop as it arrives at line 4, the `yield` statement: `yield (array[i])`. The control flow will go from line 4 to line 11, as the `yield` statement will take each element of the array and pass it into the block that was originally called with the `#animals` method. Then, the control flow returns to line 5, as the iteration increases by one element.
+
+An `until` (or `while`) loop will always return `nil`, so in order to return the original array, we include it on line 7. Of course, if you want to return a modified array, an empty array must first be created and the iterations must be pushed into this modified array and returned on the last line.
+
+Useful!

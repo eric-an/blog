@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<h1 style="text-align: center">Index of Posts</h1>
+<!-- This loops through the paginated posts -->
+{% for post in site.posts %}
+<br>
+<br>  
+  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  <h3><strong>{{ post.date | date: "%B %e, %Y" }}</strong></h3>
+
+  <p><small>{{ post.content }}</small></p>
+  <br>
+{% endfor %}

@@ -11,11 +11,11 @@ Remember that commercial - 'How many licks does it take to get to the center of 
 
 I think learning to code serves up the same philosophical challenge. Recently, I find myself asking the question, how much do I really know about programming? How much more do I have to learn to become a decent web developer?
 
-That's when I came across this interesting chart created by the [Viking Code School](http://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard){:target="_blank", "text-align:center"}:
+That's when I came across this interesting chart created by the [Viking Code School](http://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard){:target="_blank"}:
 
 <img src="{{ site.baseurl }}/img/coding_chart.png" alt="coding_chart" width="440" height="310" style="display: block; margin: 0 auto"/>
 
-It's pretty self-explanatory and does an excellent job of charting my own progression with learning to code. Initially, I found myself soaking up the material and making strong headway in [CareerFoundry](http://careerfoundry.com), a remote bootcamp course - it was like bowling with the guard rails up. I sped through the course in a month and half, when it was supposed to take at least three months. 
+It's pretty self-explanatory and does an excellent job of charting my own progression with learning to code. Initially, I found myself soaking up the material and making strong headway in [CareerFoundry](http://careerfoundry.com){:target="_blank"}, a remote bootcamp course - it was like bowling with the guard rails up. I sped through the course in a month and half, when it was supposed to take at least three months. 
 
 By the end, I understood the ecommerce website I had built and could troubleshoot other students' issues - mostly by comparing it to my working code and reflecting back on what problems I had.
 
@@ -23,7 +23,7 @@ Nevertheless, I had an excellent grasp of the course material and a solid enough
 
 <img src="{{ site.baseurl }}/img/high_five.gif" alt="high_five" width="300" height="225" style="display: block; margin: 0 auto"/>
 
-But I had no idea what my next steps would be - what to study next. I had a good grasp of how Ruby on Rails worked, but if I was asked to create a web application from scratch, I would've said, "I need a few days." It was with that realization that I started [Flatiron School's Learn Verified](https://learn.co/verified) program to gain a better foundation in programming.
+But I had no idea what my next steps would be - what to study next. I had a good grasp of how Ruby on Rails worked, but if I was asked to create a web application from scratch, I would've said, "I need a few days." It was with that realization that I started [Flatiron School's Learn Verified](https://learn.co/verified){:target="_blank"} program to gain a better foundation in programming.
 
 I'm still progressing through the course, but I find this material to be more comprehensive (it does cost more!). I learned the ins and outs of Ruby - from procedural to object oriented programming and as a result, I gained a deeper understanding of Rails. I even learned about dynamic object relational mapping and frameworks that build upon those concepts.
 
@@ -41,7 +41,7 @@ And that's when I realized that the issue was deeper than coding.
 
 I reflected on the fact that everything is pretty easy to start - introductory material is always simplified and generalized. It's only when you try to become proficient in an area that you have to learn the intricacies and abstractions that define expertise. 
 
-When I first started to learn how to golf, it was fun for a while, trying to whack at a ball. But as I tried to refine my swing and improve my accuracy, the pressure to perform grew, as did the expectation to be better. When it didn't come quickly, I remember there was a moment in time that I lost interest in it and wanted to pursue another sport. But now, I wouldn't trade my golf game for any other sport in the world, except maybe [sled dog racing across Alaska](http://iditarod.com).
+When I first started to learn how to golf, it was fun for a while, trying to whack at a ball. But as I tried to refine my swing and improve my accuracy, the pressure to perform grew, as did the expectation to be better. When it didn't come quickly, I remember there was a moment in time that I lost interest in it and wanted to pursue another sport. But now, I wouldn't trade my golf game for any other sport in the world, except maybe [sled dog racing across Alaska](http://iditarod.com){:target="_blank"}.
 
 Yes, the journey will undoubtedly get harder as I continue, but my confidence grows as does my experience and proficiency. It would be a lot easier to move on to another goal or quit and start over in something else now that the rosy-colored glasses have come off. But I know that becoming a programmer and making web applications is something I enjoy and want to do. I just have to shamelessly admit that I am not a prodigy at it and commit myself to working hard to becoming a proficient developer.
 

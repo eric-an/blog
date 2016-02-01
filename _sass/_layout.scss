@@ -9,8 +9,6 @@
     position: relative; /* To ensure the bottom border is positioned correctly */
 
     h1 {
-        // Font is included from Google Fonts automatically unless a custom banner is used
-        // See _config.yml for details
         font-family: $banner-font-family;
         font-size: 24px;
         font-weight: 400;
@@ -75,4 +73,10 @@ section[role="main"] {
     @include min-breakpoint($desktop-breakpoint) {
         width: $layout-width;
     }
+}
+
+
+iframe {
+    display: block;
+    margin: 0 auto;
 }

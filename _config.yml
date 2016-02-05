@@ -3,7 +3,7 @@ title: I Saw An Eric
 author: Eric An
 author_link: http://eric-an.github.io/
 author_description: There's no better practice than repetition.
-description: A blog by an aspiring web developer.
+description: A blog by an aspiring web developer. I will post on topics regarding object oriented programming as well as working with Ruby on Rails. In the near future, I will cover JavaScript and applicable libraries and frameworks.
 baseurl: /blog # the subpath of your site, e.g. /blog
 url: http://eric-an.github.io/ # the base hostname & protocol for your site
 

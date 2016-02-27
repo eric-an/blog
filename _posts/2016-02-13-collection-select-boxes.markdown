@@ -35,12 +35,12 @@ class SessionAttendee < ActiveRecord::Base
 end
 {% endhighlight %}
 
-We can know establish that each session has many attendees and every attendee can have many sessions.
+We can now establish that each session has many attendees and every attendee can have many sessions.
 
 **Generate the Form**
 ---
 
-Our coordinator wants to view a page that will create a new session and record all the attendees for that particular session. Assuming that the attendees' information has already been entered into the database, we will list all of them on the page through checkboxes using the `form_for` helper method to create a form.
+Our coordinator wants to view a page that will create a new session and record all the attendees for that particular session. Assuming that the attendees' information has already been entered into the database, we will list all of them on the page with checkboxes using the `form_for` helper method to create a form.
 
 {% highlight ruby linenos%}
 <%= form_for @session do |f| %>

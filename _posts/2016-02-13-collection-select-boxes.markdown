@@ -5,7 +5,7 @@ date:   2016-02-13
 permalink: /collection_check_boxes
 ---
 
-Imagine we are creating an web application to help a conference coordinator organize and confirm which attendees will attend which sessions. This can be completed in Rails using collection select boxes.
+Imagine we are creating a web application to help a conference coordinator organize and confirm which attendees will attend which sessions. This can be completed in Rails using collection select boxes.
 
 **Defining the Models**
 ---

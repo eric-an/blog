@@ -90,9 +90,9 @@ class CausesController < ApplicationController
   post '/causes/new' do
     @user = current_user
     @cause = Cause.new(name: params[:cause][:name])
+    @cause.created_by_user = @user.id
     @cause.description = params[:cause][:description]
     @cause.funding = params[:cause][:funding]
-
     if params[:cause][:category_id]
       @cause.category_id = params[:cause][:category_id]
     else
@@ -103,14 +103,13 @@ class CausesController < ApplicationController
       @cause.users << @user if !@cause.users.include?(@user)
       redirect to "/causes"
     else
-     erb :"causes/new", locals: {message: "The cause wasn't created."}
+      erb :"causes/new", locals: {message: "The cause wasn't created."}
     end
-
   end
 end
 {% endhighlight %}
 
-The first few routes will `create` the form and process the form input to create a new `Cause`. The different attributes of the `Cause` (like name, description, and funding) will be defined with values from the form submission. The user will also have an option to choose from an existing `Category` or create a new `Category` to associate with the `Cause`.
+The first few routes will `create` the form and process the form input to create a new `Cause`. The different attributes of the `Cause` (like name, description, created by the user, and funding) will be defined with values from the form submission. The user will also have an option to choose from an existing `Category` or create a new `Category` to associate with the `Cause`.
 
 To accomplish this, the `POST` method on the create action will utilize a conditional statement to check if a particular category checkbox has been marked. If not, a new `Category` will be created and associated with the new `Cause` with the value from the form input for a new category.
 
@@ -144,7 +143,7 @@ get '/cause/:id/edit' do
   if logged_in?
     @user = current_user
     @cause = Cause.find_by(id: params[:id])
-    if @cause.users.first == @user
+    if @cause.created_by_user == @user.id
       erb :"causes/edit"
     else
       redirect to '/causes'
@@ -186,7 +185,7 @@ delete '/cause/:id/delete' do
   if logged_in?
     @user = current_user
     @cause = Cause.find_by(id: params[:id])
-    if @cause.users.first == @user
+    if @cause.created_by_user == @user.id
       @cause.destroy
       erb :"users/show", locals: {message: "The cause was deleted."}
     else
